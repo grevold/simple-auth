@@ -5,6 +5,7 @@ import { useAppSelector } from "./store/store";
 import { useAuth } from "./hooks/useAuth";
 import { SignInPage } from "./pages/SignInPage/SignInPage";
 import { SignUpPage } from "./pages/SignUpPage/SignUpPage";
+import { Layout } from "./components/Layout/Layout";
 
 function App() {
   useAuth();
@@ -14,15 +15,21 @@ function App() {
     case "guest":
       return (
         <HashRouter>
-          <Routes>
-            <Route element={<SignInPage />} path={RoutePath.SignIn}></Route>
-            <Route element={<SignUpPage />} path={"*"}></Route>
-          </Routes>
+          <Layout>
+            <Routes>
+              <Route element={<SignInPage />} path={RoutePath.SignIn}></Route>
+              <Route element={<SignUpPage />} path={"*"}></Route>
+            </Routes>
+          </Layout>
         </HashRouter>
       );
 
     case "success":
-      return <h1>Страница с товарами</h1>;
+      return (
+        <Layout>
+          <h1>Страница с товарами</h1>
+        </Layout>
+      );
 
     case "loading":
       return <h1>Загрузка...</h1>;
