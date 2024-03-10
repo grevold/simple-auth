@@ -1,0 +1,11 @@
+{
+  "name": "simple-auth",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "concurrently --kill-others \"npm start --prefix ./db\" \"npm start --prefix ./be\" \"npm start --prefix ./fe\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

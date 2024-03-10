@@ -1,0 +1,84 @@
+{
+  "messages": [
+    {
+      "id": "0",
+      "message": "Hello World!"
+    },
+    {
+      "id": "70f0"
+    },
+    {
+      "id": "51e9"
+    },
+    {
+      "id": "6d65"
+    },
+    {
+      "id": "b49f"
+    },
+    {
+      "id": "5379"
+    },
+    {
+      "id": "3b6f"
+    },
+    {
+      "id": "bf13"
+    },
+    {
+      "id": "d6ff"
+    },
+    {
+      "id": "a6b6"
+    },
+    {
+      "id": "de4e"
+    },
+    {
+      "id": "4338"
+    },
+    {
+      "id": "5a78"
+    },
+    {
+      "id": "1870"
+    },
+    {
+      "id": "666"
+    },
+    {
+      "id": "666",
+      "text1": "text"
+    }
+  ],
+  "products": [
+    {
+      "id": "25ff",
+      "title": "Гаечный ключ 6",
+      "price": 1100,
+      "description": "Отличный гаечный ключ"
+    }
+  ],
+  "users": [
+    {
+      "id": "4284",
+      "login": "grevold66111",
+      "password": "12345"
+    },
+    {
+      "id": "c4ec",
+      "login": "dfsdf",
+      "password": "dfdfsdf"
+    },
+    {
+      "id": "f603",
+      "login": "hhhhhhhhhhhhhh",
+      "password": "hhhhhhhhhhhhhhhhhhhh"
+    },
+    {
+      "id": "97d2",
+      "login": "aaaaaaaaaaaaaa",
+      "password": "aaaaaaaaaaaaaaaaaa"
+    }
+  ]
+}
