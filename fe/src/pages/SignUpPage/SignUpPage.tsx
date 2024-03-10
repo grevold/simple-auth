@@ -1,6 +1,8 @@
 import useNotification from "antd/es/notification/useNotification";
 import { SignUpForm } from "../../components/SignUpForm/SignUpForm";
 
+import s from "./SignUpPage.module.css";
+
 import { actions } from "../../store/slices/userSlice";
 
 import { useAppDispatch } from "../../store/store";
@@ -24,9 +26,9 @@ export const SignUpPage = () => {
   };
 
   return (
-    <>
+    <div className={s.root}>
       {notificationContext}
       <SignUpForm onSubmit={handleSubmit} />
-    </>
+    </div>
   );
 };
