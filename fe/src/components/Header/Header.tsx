@@ -11,7 +11,6 @@ import { useAppSelector } from "../../store/store";
 
 export const Header = () => {
   const userStatus = useAppSelector((store) => store.user.status);
-  console.log(userStatus);
 
   const items = useMemo(() => {
     switch (userStatus) {
