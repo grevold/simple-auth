@@ -14,8 +14,7 @@ export const signInThunk = createAsyncThunk<string, IUserCredentials>(
       });
       return response.data;
     } catch (error: any) {
-      const errorCode = error?.response?.data?.errorCode || "";
-      return thunkAPI.rejectWithValue(errorCode);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );

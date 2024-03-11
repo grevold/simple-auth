@@ -7,7 +7,7 @@ import jwt from "jsonwebtoken";
 const jwtSecret = "maestro";
 
 const UserCredentialsSchema = z.object({
-  login: z.string(),
+  email: z.string(),
   password: z.string(),
 });
 
@@ -21,11 +21,11 @@ class UserController {
         message: "Невалидные данные",
       });
     }
-    const { login, password } = parse.data;
+    const { email, password } = parse.data;
     try {
       const isUserAlreadyExists = (
         await axios.get<TUserCredentials[]>(`${dbUrl}users`)
-      ).data.some((user) => user.login === login);
+      ).data.some((user) => user.email === email);
       if (isUserAlreadyExists) {
         return res
           .status(403)
@@ -41,7 +41,7 @@ class UserController {
     try {
       await axios.post(
         `${dbUrl}users`,
-        { login, password },
+        { email, password },
         {
           headers: {
             ["Content-Type"]: "application/json",
@@ -49,7 +49,7 @@ class UserController {
         }
       );
 
-      const jwtToken = this.generateJWT({ login, password });
+      const jwtToken = this.generateJWT({ email, password });
 
       return res.status(200).json(jwtToken);
     } catch (error) {
@@ -66,14 +66,14 @@ class UserController {
         message: "Невалидные данные",
       });
     }
-    const { login, password } = parse.data;
+    const { email, password } = parse.data;
 
     try {
       const areCredentialsValid = (
         await axios.get<TUserCredentials[]>(`${dbUrl}users`)
-      ).data.some((user) => user.login === login && user.password === password);
+      ).data.some((user) => user.email === email && user.password === password);
       if (areCredentialsValid) {
-        const jwtToken = this.generateJWT({ login, password });
+        const jwtToken = this.generateJWT({ email, password });
         return res.status(200).json(jwtToken);
       } else {
         return res.status(403).json({

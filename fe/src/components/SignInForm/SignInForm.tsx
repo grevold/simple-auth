@@ -1,7 +1,8 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Button, Form, Input } from "antd";
+import { IUserCredentials } from "../../types";
 
-interface UserSignUpCredentials {
+interface UserSignInCredentials {
   email: string;
   password: string;
 }
@@ -31,11 +32,11 @@ const tailFormItemLayout = {
 };
 
 interface IProps {
-  onSubmit: (userSignUpCredentials: UserSignUpCredentials) => void;
+  onSubmit: (userSignInCredentials: UserSignInCredentials) => void;
 }
 
 export const SignInForm: FC<IProps> = ({ onSubmit }) => {
-  const [form] = Form.useForm<UserSignUpCredentials>();
+  const [form] = Form.useForm<UserSignInCredentials>();
 
   return (
     <Form
