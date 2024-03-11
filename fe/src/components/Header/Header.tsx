@@ -42,8 +42,16 @@ export const Header = () => {
         dispatch(actions.logOut());
         return;
       }
+      case RoutePath.SignIn: {
+        navigate(RoutePath.SignIn);
+        return;
+      }
+      case RoutePath.SignUp: {
+        navigate(RoutePath.SignUp);
+        return;
+      }
       default: {
-        navigate(currentKey);
+        // navigate(currentKey);
       }
     }
   };

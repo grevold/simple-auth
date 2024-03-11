@@ -41,12 +41,16 @@ export const SignUpForm: FC<IProps> = ({ onSubmit }) => {
       style={{ maxWidth: "600px" }}
     >
       <Form.Item
-        name="login"
+        name="email"
         label="Почта"
         rules={[
           {
+            type: "email",
+            message: "Невалидная почта!",
+          },
+          {
             required: true,
-            message: "Пожалуйста, введите логин!",
+            message: "Пожалуйста, введите почту!",
           },
         ]}
       >

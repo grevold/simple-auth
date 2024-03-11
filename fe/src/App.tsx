@@ -7,34 +7,52 @@ import { SignInPage } from "./pages/SignInPage/SignInPage";
 import { SignUpPage } from "./pages/SignUpPage/SignUpPage";
 import { Layout } from "./components/Layout/Layout";
 import { PreloaderPage } from "./pages/PreloaderPage/PreloaderPage";
+import useNotification from "antd/es/notification/useNotification";
+import { NotificationInstance } from "antd/es/notification/interface";
+import { createContext } from "react";
+
+export const NotificationContext = createContext<NotificationInstance>(
+  {} as NotificationInstance
+);
 
 function App() {
   useAuth();
   const userStatus = useAppSelector((store) => store.user.status);
 
-  switch (userStatus) {
-    case "guest":
-      return (
+  const [notification, notificationContext] = useNotification();
+
+  return (
+    <>
+      <NotificationContext.Provider value={notification}>
         <HashRouter>
           <Layout>
             <Routes>
-              <Route element={<SignInPage />} path={RoutePath.SignIn}></Route>
-              <Route element={<SignUpPage />} path={"*"}></Route>
+              {userStatus === "guest" && (
+                <>
+                  <Route element={<SignUpPage />} path={RoutePath.SignUp} />
+                  <Route element={<SignInPage />} path={"*"} />
+                </>
+              )}
+
+              {userStatus === "success" && (
+                <>
+                  <Route element={<h1>Страница с товарами</h1>} path={"*"} />
+                </>
+              )}
+
+              {userStatus === "loading" && (
+                <>
+                  <Route element={<PreloaderPage />} path={"*"} />
+                </>
+              )}
             </Routes>
           </Layout>
         </HashRouter>
-      );
+      </NotificationContext.Provider>
 
-    case "success":
-      return (
-        <Layout>
-          <h1>Страница с товарами</h1>
-        </Layout>
-      );
-
-    case "loading":
-      return <PreloaderPage />;
-  }
+      {notificationContext}
+    </>
+  );
 }
 
 export default App;

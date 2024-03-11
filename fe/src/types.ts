@@ -4,7 +4,7 @@ export enum RoutePath {
 }
 
 export interface IUserCredentials {
-  login: string;
+  email: string;
   password: string;
 }
 
