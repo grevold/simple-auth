@@ -16,6 +16,7 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     logOut: (state, action: PayloadAction<void>) => {
+      localStorage.clear();
       return {
         status: "guest",
       };
