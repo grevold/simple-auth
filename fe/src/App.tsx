@@ -6,6 +6,7 @@ import { useAuth } from "./hooks/useAuth";
 import { SignInPage } from "./pages/SignInPage/SignInPage";
 import { SignUpPage } from "./pages/SignUpPage/SignUpPage";
 import { Layout } from "./components/Layout/Layout";
+import { PreloaderPage } from "./pages/PreloaderPage/PreloaderPage";
 
 function App() {
   useAuth();
@@ -32,7 +33,7 @@ function App() {
       );
 
     case "loading":
-      return <h1>Загрузка...</h1>;
+      return <PreloaderPage />;
   }
 }
 
