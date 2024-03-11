@@ -1,27 +1,18 @@
 import { ReactElement, useMemo } from "react";
-import { Badge, Menu } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Menu } from "antd";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { actions } from "../../store/slices/userSlice";
 import {
   UserAddOutlined,
   LoginOutlined,
-  ShoppingOutlined,
-  ShoppingCartOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import z from "zod";
 import { RoutePath } from "../../types";
-import { Link } from "react-router-dom";
 
-const MenuKeysSchema = z.union([
-  z.literal("sign-up"),
-  z.literal("sign-in"),
-  z.literal("main"),
-  z.literal("cart"),
-  z.literal("logout"),
-]);
+const MenuKeysSchema = z.union([z.nativeEnum(RoutePath), z.literal("logout")]);
 
 type TMenuItemKey = z.infer<typeof MenuKeysSchema>;
 
@@ -39,6 +30,7 @@ export const Header = () => {
   const userStatus = useAppSelector((store) => store.user.status);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleMenuItemClick = ({ key }: IMenuItemClickEvent) => {
     const parse = MenuKeysSchema.safeParse(key);
@@ -50,13 +42,8 @@ export const Header = () => {
         dispatch(actions.logOut());
         return;
       }
-      case "sign-up": {
-        navigate(RoutePath.SignUp);
-        return;
-      }
-      case "sign-in": {
-        navigate(RoutePath.SignIn);
-        return;
+      default: {
+        navigate(currentKey);
       }
     }
   };
@@ -67,12 +54,12 @@ export const Header = () => {
         const items: IMenuItem[] = [
           {
             label: "Зарегистрироваться",
-            key: "sign-up",
+            key: RoutePath.SignUp,
             icon: <UserAddOutlined />,
           },
           {
             label: "Войти",
-            key: "sign-in",
+            key: RoutePath.SignIn,
             icon: <LoginOutlined />,
           },
         ];
@@ -103,7 +90,7 @@ export const Header = () => {
   return (
     <Menu
       onClick={handleMenuItemClick}
-      selectedKeys={["main"]}
+      selectedKeys={[location.pathname]}
       mode="horizontal"
       items={items}
     />
