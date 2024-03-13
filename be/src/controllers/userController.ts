@@ -1,7 +1,7 @@
 import z from "zod";
 import { Request, Response } from "express";
 import axios from "axios";
-import { dbUrl } from "../appConstants";
+import { EErrorCodes, dbUrl } from "../appConstants";
 import jwt from "jsonwebtoken";
 
 const jwtSecret = "maestro";
@@ -19,6 +19,7 @@ class UserController {
     if (!parse.success) {
       return res.status(400).json({
         message: "Невалидные данные",
+        errorCode: EErrorCodes.InvalidData,
       });
     }
     const { email, password } = parse.data;
@@ -27,14 +28,15 @@ class UserController {
         await axios.get<TUserCredentials[]>(`${dbUrl}users`)
       ).data.some((user) => user.email === email);
       if (isUserAlreadyExists) {
-        return res
-          .status(403)
-          .json({ message: "Юзер с таким логином уже зарегистрирован" });
+        return res.status(403).json({
+          message: "Юзер с таким логином уже зарегистрирован",
+          errorCode: EErrorCodes.AlreadyRegisteredUser,
+        });
       }
     } catch (error) {
       return res.status(500).json({
-        message: "Не удалось проверить имеется ли уже юзер с таким логином",
-        error,
+        message: "Не удалось проверить имеется ли уже юзер с таким email",
+        errorCode: EErrorCodes.ErrorVerifyUserEmail,
       });
     }
 
@@ -55,7 +57,7 @@ class UserController {
     } catch (error) {
       return res.status(500).json({
         message: "Произошла ошибка при взаимодействии с базой данных",
-        error,
+        errorCode: EErrorCodes.DataBaseError,
       });
     }
   }
@@ -64,6 +66,7 @@ class UserController {
     if (!parse.success) {
       return res.status(400).json({
         message: "Невалидные данные",
+        errorCode: EErrorCodes.InvalidData,
       });
     }
     const { email, password } = parse.data;
@@ -77,13 +80,14 @@ class UserController {
         return res.status(200).json(jwtToken);
       } else {
         return res.status(403).json({
-          message: "Неверный логин или пароль",
+          message: "Неверный email или пароль",
+          errorCode: EErrorCodes.InvalidEmailOrPassword,
         });
       }
     } catch (error) {
       return res.status(500).json({
         message: "Не удалось проверить данные юзера",
-        error,
+        errorCode: EErrorCodes.ErrorVerifyUserEmail,
       });
     }
   }

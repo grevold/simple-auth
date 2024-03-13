@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { Button, Form, Input } from "antd";
-import { IUserCredentials } from "../../types";
 
 interface UserSignInCredentials {
   email: string;

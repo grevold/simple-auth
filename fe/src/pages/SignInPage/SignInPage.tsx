@@ -8,23 +8,17 @@ import { useAppDispatch } from "../../store/store";
 import { IUserCredentials } from "../../types";
 import { SignInForm } from "../../components/SignInForm/SignInForm";
 import { signInThunk } from "../../store/slices/thunks/signInThunk";
-import { useNotification } from "../../hooks/useNotification";
+
+import { useErrorNotification } from "../../hooks/useErrorNotification";
 
 const { Title } = Typography;
 
 export const SignInPage = () => {
   const dispatch = useAppDispatch();
-  const notification = useNotification();
+  const errorNotification = useErrorNotification("Возникла ошибка при входе");
 
   const handleSubmit = (userCredentials: IUserCredentials) => {
-    dispatch(signInThunk(userCredentials))
-      .unwrap()
-      .catch((error) => {
-        notification.error({
-          message: "Возникла ошибка при входе",
-          description: JSON.stringify(error),
-        });
-      });
+    dispatch(signInThunk(userCredentials)).unwrap().catch(errorNotification);
     dispatch(actions.setLoading());
   };
 
