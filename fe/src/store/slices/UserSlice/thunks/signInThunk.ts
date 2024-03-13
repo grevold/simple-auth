@@ -1,15 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { beUrl } from "../../../appConstants";
-import { IUserCredentials } from "../../../types";
+import { beUrl } from "../../../../appConstants";
+import { IUserCredentials } from "../../../../types";
 
-export const signUpThunk = createAsyncThunk<string, IUserCredentials>(
-  "user/sign-up",
+export const signInThunk = createAsyncThunk<string, IUserCredentials>(
+  "user/sign-in",
   async function (userCredentials, thunkAPI) {
     try {
       const response = await axios<string>({
         method: "post",
-        url: `${beUrl}user/sign-up`,
+        url: `${beUrl}user/sign-in`,
         data: userCredentials,
       });
       return response.data;

@@ -4,7 +4,8 @@
 import { useEffect } from "react";
 import { jwtLocalStorageKey } from "../appConstants";
 import { useAppDispatch } from "../store/store";
-import { actions } from "../store/slices/userSlice";
+import { actions } from "../store/slices/UserSlice/userSlice";
+
 
 export const useAuth = () => {
   const dispatch = useAppDispatch();

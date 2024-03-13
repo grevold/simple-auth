@@ -1,5 +1,24 @@
 {
-  "products": [],
+  "products": [
+    {
+      "title": "Product 1",
+      "price": 100,
+      "description": "Best product!",
+      "img": "string"
+    },
+    {
+      "title": "Product 2",
+      "price": 200,
+      "description": "Best product!",
+      "img": "string"
+    },
+    {
+      "title": "Product 3",
+      "price": 300,
+      "description": "Best product!",
+      "img": "string"
+    }
+  ],
   "users": [
     {
       "id": "028f",
