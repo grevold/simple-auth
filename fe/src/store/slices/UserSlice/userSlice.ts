@@ -1,7 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+
 import { signInThunk } from "./thunks/signInThunk";
 import { signUpThunk } from "./thunks/signUpThunk";
-import { jwtLocalStorageKey } from "../../appConstants";
+import { jwtLocalStorageKey } from "../../../appConstants";
 
 interface IUserState {
   status: "loading" | "success" | "guest";

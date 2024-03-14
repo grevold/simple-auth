@@ -10,6 +10,7 @@ import { PreloaderPage } from "./pages/PreloaderPage/PreloaderPage";
 import useNotification from "antd/es/notification/useNotification";
 import { NotificationInstance } from "antd/es/notification/interface";
 import { createContext } from "react";
+import { CatalogPage } from "./pages/CatalogPage/CatalogPage";
 
 export const NotificationContext = createContext<NotificationInstance>(
   {} as NotificationInstance
@@ -29,6 +30,10 @@ function App() {
             <Routes>
               {userStatus === "guest" && (
                 <>
+                  <Route
+                    element={<CatalogPage />}
+                    path={RoutePath.CatalogPage}
+                  />
                   <Route element={<SignUpPage />} path={RoutePath.SignUp} />
                   <Route element={<SignInPage />} path={"*"} />
                 </>
@@ -36,7 +41,7 @@ function App() {
 
               {userStatus === "success" && (
                 <>
-                  <Route element={<h1>Страница с товарами</h1>} path={"*"} />
+                  <Route element={<CatalogPage />} path={"*"} />
                 </>
               )}
 

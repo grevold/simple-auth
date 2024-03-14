@@ -2,7 +2,7 @@ import { ReactElement, useMemo } from "react";
 import { Menu } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import { actions } from "../../store/slices/userSlice";
+
 import {
   UserAddOutlined,
   LoginOutlined,
@@ -11,6 +11,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import z from "zod";
 import { RoutePath } from "../../types";
+import { actions } from "../../store/slices/UserSlice/userSlice";
 
 const MenuKeysSchema = z.union([z.nativeEnum(RoutePath), z.literal("logout")]);
 
@@ -62,6 +63,10 @@ export const Header = () => {
             key: RoutePath.SignIn,
             icon: <LoginOutlined />,
           },
+          {
+            label: "Каталог",
+            key: RoutePath.CatalogPage,
+          },
         ];
 
         return items;
@@ -73,6 +78,10 @@ export const Header = () => {
             label: "Выйти",
             key: "logout",
             icon: <LogoutOutlined />,
+          },
+          {
+            label: "Каталог",
+            key: RoutePath.CatalogPage,
           },
         ];
 

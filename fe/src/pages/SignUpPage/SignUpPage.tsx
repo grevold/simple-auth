@@ -3,12 +3,13 @@ import { Typography } from "antd";
 
 import s from "./SignUpPage.module.css";
 
-import { actions } from "../../store/slices/userSlice";
+
 
 import { useAppDispatch } from "../../store/store";
 import { IUserCredentials } from "../../types";
-import { signUpThunk } from "../../store/slices/thunks/signUpThunk";
+import { signUpThunk } from "../../store/slices/UserSlice/thunks/signUpThunk";
 import { useErrorNotification } from "../../hooks/useErrorNotification";
+import { actions } from "../../store/slices/UserSlice/userSlice";
 
 const { Title } = Typography;
 

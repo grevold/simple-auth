@@ -2,14 +2,13 @@ import s from "./SignInPage.module.css";
 
 import { Typography } from "antd";
 
-import { actions } from "../../store/slices/userSlice";
-
 import { useAppDispatch } from "../../store/store";
 import { IUserCredentials } from "../../types";
 import { SignInForm } from "../../components/SignInForm/SignInForm";
-import { signInThunk } from "../../store/slices/thunks/signInThunk";
+import { signInThunk } from "../../store/slices/UserSlice/thunks/signInThunk";
 
 import { useErrorNotification } from "../../hooks/useErrorNotification";
+import { actions } from "../../store/slices/UserSlice/userSlice";
 
 const { Title } = Typography;
 
