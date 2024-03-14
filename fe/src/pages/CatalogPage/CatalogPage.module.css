@@ -1,9 +1,20 @@
 .root {
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 .containerProduct {
   display: flex;
+  justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
+  gap: 50px;
+  margin: 0 auto;
+}
+.description {
+  margin-bottom: 50px;
 }

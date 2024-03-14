@@ -5,6 +5,7 @@ export enum RoutePath {
   SignIn = "/signIn",
   SignUp = "/signUp",
   CatalogPage = "/catalogPage",
+  CartPage = "/cartPage",
 }
 
 export interface IUserCredentials {

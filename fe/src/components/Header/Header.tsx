@@ -83,6 +83,10 @@ export const Header = () => {
             label: "Каталог",
             key: RoutePath.CatalogPage,
           },
+          {
+            label: "Корзина",
+            key: RoutePath.CartPage,
+          },
         ];
 
         return items;

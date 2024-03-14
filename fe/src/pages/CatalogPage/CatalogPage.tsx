@@ -22,7 +22,7 @@ export const CatalogPage = () => {
       <Title>Каталог</Title>
       <div className={s.containerProduct}>
         {data.map((product) => (
-          <Product productData={product} />
+          <Product productData={product} key={product.title} />
         ))}
       </div>
     </div>
