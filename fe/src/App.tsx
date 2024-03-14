@@ -11,6 +11,7 @@ import useNotification from "antd/es/notification/useNotification";
 import { NotificationInstance } from "antd/es/notification/interface";
 import { createContext } from "react";
 import { CatalogPage } from "./pages/CatalogPage/CatalogPage";
+import { CartPage } from "./pages/CartPage/CartPage";
 
 export const NotificationContext = createContext<NotificationInstance>(
   {} as NotificationInstance
@@ -42,6 +43,7 @@ function App() {
               {userStatus === "success" && (
                 <>
                   <Route element={<CatalogPage />} path={"*"} />
+                  <Route element={<CartPage />} path={RoutePath.CartPage} />
                 </>
               )}
 
