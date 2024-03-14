@@ -41,10 +41,7 @@ function App() {
 
               {userStatus === "success" && (
                 <>
-                  <Route
-                    element={<CatalogPage />}
-                    path={RoutePath.CatalogPage}
-                  />
+                  <Route element={<CatalogPage />} path={"*"} />
                 </>
               )}
 

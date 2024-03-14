@@ -16,16 +16,15 @@ export const CatalogPage = () => {
   }, [dispatch]);
   if (isLoading) {
     return <PreloaderPage />;
-  } else {
-    return (
-      <div className={s.root}>
-        <Title>Каталог</Title>
-        <div className={s.containerProduct}>
-          {data.map((product) => (
-            <Product productData={product} />
-          ))}
-        </div>
-      </div>
-    );
   }
+  return (
+    <div className={s.root}>
+      <Title>Каталог</Title>
+      <div className={s.containerProduct}>
+        {data.map((product) => (
+          <Product productData={product} />
+        ))}
+      </div>
+    </div>
+  );
 };
