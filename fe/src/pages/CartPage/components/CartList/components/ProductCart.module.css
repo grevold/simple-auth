@@ -2,9 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width:100%;
-  max-width: 600px;
-}
-.image {
-  width: 100px;
+  width: 100%;
+  max-width: 800px;
 }

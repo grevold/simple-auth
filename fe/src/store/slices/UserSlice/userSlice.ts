@@ -4,10 +4,11 @@ import { signInThunk } from "./thunks/signInThunk";
 import { signUpThunk } from "./thunks/signUpThunk";
 import { jwtLocalStorageKey } from "../../../appConstants";
 import { IProduct } from "../../../types";
+import axios from "axios";
 
 interface IUserState {
   status: "loading" | "success" | "guest";
-  cart: IProduct[];
+  cart: string[];
 }
 
 const initialState: IUserState = {
@@ -15,12 +16,23 @@ const initialState: IUserState = {
   cart: [],
 };
 
+const saveJwt = (jwt: string) => {
+  localStorage.setItem(jwtLocalStorageKey, jwt);
+  axios.defaults.headers.common["jwt"] = jwt;
+};
+
+const removeJwt = () => {
+  localStorage.removeItem(jwtLocalStorageKey);
+  delete axios.defaults.headers.common["jwt"];
+};
+
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     logOut: (state, action: PayloadAction<void>) => {
-      localStorage.clear();
+      removeJwt();
+
       return {
         ...state,
         status: "guest",
@@ -38,12 +50,14 @@ const userSlice = createSlice({
         status: "loading",
       };
     },
+    
   },
   extraReducers(builder) {
     builder.addCase(
       signInThunk.fulfilled,
       (userState, action: PayloadAction<string>) => {
-        localStorage.setItem(jwtLocalStorageKey, action.payload);
+        saveJwt(action.payload);
+
         return {
           ...userState,
           status: "success",
@@ -62,7 +76,8 @@ const userSlice = createSlice({
     builder.addCase(
       signUpThunk.fulfilled,
       (userState, action: PayloadAction<string>) => {
-        localStorage.setItem(jwtLocalStorageKey, action.payload);
+        saveJwt(action.payload);
+
         return {
           ...userState,
           status: "success",
