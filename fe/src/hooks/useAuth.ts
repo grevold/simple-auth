@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { jwtLocalStorageKey } from "../appConstants";
 import { useAppDispatch } from "../store/store";
 import { actions } from "../store/slices/UserSlice/userSlice";
-
+import axios from "axios";
 
 export const useAuth = () => {
   const dispatch = useAppDispatch();
@@ -14,6 +14,7 @@ export const useAuth = () => {
     const checkJwt = () => {
       const jwtFromLocalStorage = localStorage.getItem(jwtLocalStorageKey);
       if (jwtFromLocalStorage) {
+        axios.defaults.headers.common["jwt"] = jwtFromLocalStorage;
         dispatch(actions.logIn());
       } else {
         dispatch(actions.logOut());

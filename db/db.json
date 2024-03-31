@@ -1,36 +1,42 @@
 {
   "products": [
     {
+      "id": "Product 1",
       "title": "Product 1",
       "price": 100,
       "description": "Best product!",
       "img": "https://i.imgur.com/9LFjwpI.jpeg"
     },
     {
+      "id": "Product 2",
       "title": "Product 2",
       "price": 200,
       "description": "Best product!",
       "img": "https://i.imgur.com/QkIa5tT.jpeg"
     },
     {
+      "id": "Product 3",
       "title": "Product 3",
       "price": 300,
       "description": "Best product!",
       "img": "https://i.imgur.com/wXuQ7bm.jpeg"
     },
     {
+      "id": "Product 4",
       "title": "Product 4",
       "price": 100,
       "description": "Best product!",
       "img": "https://i.imgur.com/Y54Bt8J.jpeg"
     },
     {
+      "id": "Product 5",
       "title": "Product 5",
       "price": 200,
       "description": "Best product!",
       "img": "https://i.imgur.com/kKc9A5p.jpeg"
     },
     {
+      "id": "Product 6",
       "title": "Product 6",
       "price": 300,
       "description": "Best product!",
@@ -39,10 +45,48 @@
   ],
   "users": [
     {
-      "id": "028f",
-      "email": "grevold@yandex.ru",
-      "password": "lol",
+      "id": "2d2f",
+      "email": "frog@yandex.ru",
+      "password": "frog",
+      "cart": [
+        "Product 1",
+        "Product 2",
+        "Product 3",
+        "Product 4"
+      ]
+    },
+    {
+      "id": "1aac",
+      "email": "cat@yandex.ru",
+      "password": "cat",
       "cart": []
+    },
+    {
+      "id": "8c38",
+      "email": "dog@yandex.ru",
+      "password": "dog",
+      "cart": [
+        "Product 1",
+        "Product 2",
+        "Product 3"
+      ]
+    },
+    {
+      "id": "e588",
+      "email": "worm@yandex.ru",
+      "password": "worm",
+      "cart": []
+    },
+    {
+      "id": "ccc2",
+      "email": "sunboy@yandex.ru",
+      "password": "sunboy",
+      "cart": [
+        "Product 1",
+        "Product 2",
+        "Product 3",
+        "Product 6"
+      ]
     }
   ]
 }
